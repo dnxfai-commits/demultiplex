@@ -1,6 +1,6 @@
 include {   BCL2FASTQ      } from '../modules/bcl2fastq/main.nf'
 
-workflow PREPAREDATA {
+workflow BCLCONVERT {
     take:
     BCL_INPUT
     rundir_ch
