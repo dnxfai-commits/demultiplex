@@ -36,6 +36,7 @@ Pipeline overview:
 // params
 
 if (params.input) { input_ch = file(params.input, checkIfExists: true) } else { exit 1, 'Input samplesheet not specified!' }
+if (params.rundir) { rundir_ch = file(params.rundir, checkIfExists: true) } else { exit 1, "Run directory not found!" }
 
 // channels
 
@@ -52,7 +53,8 @@ include { DEMULTIPLEX } from './workflows/demultiplex'
 workflow NEGEDIA {
 
     DEMULTIPLEX(
-        input_ch
+        input_ch,
+        rundir_ch
     )
     
 }

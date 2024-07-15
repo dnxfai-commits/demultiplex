@@ -5,9 +5,10 @@ workflow DEMULTIPLEX {
 
     take:
     input_ch
+    rundir_ch
 
     main:
     PREPAREDATA     ( input_ch )
-    BCLCONVERT      ( BCL_INPUT )
+    BCLCONVERT      ( BCL_INPUT, rundir_ch )
 
 }
