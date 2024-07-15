@@ -7,10 +7,10 @@ process MAKETSV {
     input:
     path(input_ch)
 
-    /*output:
+    output:
     path("Params"), type: "dir"
     path("*.csv"), emit: csv
-    */
+    
     script:
     """
     echo "File to convert: ${input_ch.getSimpleName()}"
@@ -23,7 +23,7 @@ process MAKETSV {
             echo "\$header" | cat - "\$file" > temp && mv temp "\$file"
         fi
     done
+
+    toPrepare.R ${input_ch} ${input_ch.getSimpleName()}.csv TRUE txt ${input_ch.getSimpleName()}
     """
 }
-
-//     toPrepare.R ${input_ch} ${input_ch.getSimpleName()}.csv TRUE txt ${input_ch.getSimpleName()}
