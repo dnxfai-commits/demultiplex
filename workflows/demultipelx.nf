@@ -1,12 +1,11 @@
-include { PREPROCESSING } from '../subworkflows/preprocessing'
+include { PREPAREDATA } from '../subworkflows/preparedata'
 
-workflow DIGITALRNASEQ {
+workflow DEMULTIPLEX {
 
     take:
-    input_csv
-    adapter_fasta_ch
+    input_ch
 
     main:
-    PREPROCESSING ( input_csv, adapter_fasta_ch )
+    PREPAREDATA ( input_ch )
 
 }

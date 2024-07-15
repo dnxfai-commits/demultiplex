@@ -35,6 +35,8 @@ Pipeline overview:
 
 // params
 
+if (params.input) { input_ch = file(params.input, checkIfExists: true) } else { exit 1, 'Input samplesheet not specified!' }
+
 // channels
 
 /*
@@ -49,7 +51,9 @@ include { DEMULTIPLEX } from './workflows/demultiplex'
 
 workflow NEGEDIA {
 
-    DEMULTIPLEX()
+    DEMULTIPLEX(
+        input_ch
+    )
     
 }
 
