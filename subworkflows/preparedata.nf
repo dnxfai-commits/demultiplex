@@ -1,6 +1,6 @@
 include {   MAKETSV      } from '../modules/maketsv/main.nf'
 
-workflow PREPROCESSING {
+workflow PREPAREDATA {
     take:
     input_ch
 
