@@ -1,4 +1,4 @@
-include {   MAKETSV      } from '../modules/makets/main.nf'
+include {   MAKETSV      } from '../modules/maketsv/main.nf'
 
 workflow PREPROCESSING {
     take:
