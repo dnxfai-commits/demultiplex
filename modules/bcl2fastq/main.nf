@@ -1,4 +1,4 @@
-process bcl2fastq {
+process BCL2FASTQ {
     disk "${params.b2f_disk} GB"
     memory "${params.b2f_mem} GB"
     tag "${bcl_input.getSimpleName()}"
