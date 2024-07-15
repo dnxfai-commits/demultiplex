@@ -1,4 +1,4 @@
-process convert2fastq {
+process bcl2fastq {
     machineType 'e2-standard-32'
     cpus "${params.b2f_threads}"
     disk "${params.b2f_disk} GB"
