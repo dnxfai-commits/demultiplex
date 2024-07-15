@@ -6,6 +6,8 @@ workflow PREPAREDATA {
 
     main:
     MAKETSV ( input_ch )
-    
+    BCL_INPUT = MAKETSV.out.csv
 
+    emit: 
+    BCL_INPUT
 }

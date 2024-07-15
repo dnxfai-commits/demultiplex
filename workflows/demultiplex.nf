@@ -1,4 +1,5 @@
 include { PREPAREDATA } from '../subworkflows/preparedata'
+include { BCLCONVERT } from '../subworkflows/bclconvert'
 
 workflow DEMULTIPLEX {
 
@@ -6,6 +7,7 @@ workflow DEMULTIPLEX {
     input_ch
 
     main:
-    PREPAREDATA ( input_ch )
+    PREPAREDATA     ( input_ch )
+    BCLCONVERT      ( BCL_INPUT )
 
 }
