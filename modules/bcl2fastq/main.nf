@@ -1,16 +1,12 @@
 process bcl2fastq {
-    machineType 'e2-standard-32'
-    cpus "${params.b2f_threads}"
     disk "${params.b2f_disk} GB"
     memory "${params.b2f_mem} GB"
-    echo true
-    tag "Illumina"
-    label "bclConvert"
+    tag "${bcl_input.getSimpleName()}"
     publishDir "$params.outdir" , mode: 'copy'
 
     input:
+    path(bcl_input)
     path(rundir_ch)
-    path(csv)
 
     output:
     path("InterOp/*"), emit: interop
@@ -27,7 +23,7 @@ process bcl2fastq {
     bcl2fastq \\
         --runfolder-dir ${rundir_ch} \\
         --output-dir $params.b2f_output_dir \\
-        --sample-sheet ${csv} \\
+        --sample-sheet $bcl_input \\
         --minimum-trimmed-read-length $params.b2f_min_trimmed_read_length \\
         --mask-short-adapter-reads $params.b2f_mark_short_adapter_reads \\
         --reports-dir $params.b2f_report_dir \\
@@ -42,7 +38,7 @@ process bcl2fastq {
 
     tar -zcf Reports.tar.gz Reports
     files=`find Reads -type f`
-    md5sum \$files > Reads/${csv.getSimpleName()}_fastq.md5
+    md5sum \$files > Reads/${bcl_input.getSimpleName()}_fastq.md5
     """
     
 }
