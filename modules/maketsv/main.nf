@@ -1,7 +1,7 @@
 process MAKETSV {
     debug true
     tag "$labname"
-    container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/fastqc:v0.12.1'
+    //container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/fastqc:v0.12.1'
     publishDir "${params.outdir}", mode: 'copy'
 
     input:
