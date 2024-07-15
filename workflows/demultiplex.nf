@@ -9,6 +9,6 @@ workflow DEMULTIPLEX {
 
     main:
     PREPAREDATA     ( input_ch )
-    BCLCONVERT      ( BCL_INPUT, rundir_ch )
+    BCLCONVERT      ( PREPAREDATA.out.BCL_INPUT, rundir_ch )
 
 }
