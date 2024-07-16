@@ -14,9 +14,7 @@ process RUNMULTIQC {
 
     script:
     """
-    mkdir tmp && mv * tmp
     multiqc -n ${bcl_input.getSimpleName()} --quiet tmp
-    rm -fr tmp
     """
 
 }
