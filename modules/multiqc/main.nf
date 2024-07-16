@@ -9,8 +9,8 @@ process RUNMULTIQC {
     path(stats)
 
     output:
-    path("*report.html"), emit: report
-    path("*_data"), emit: data
+    path("${bcl_input.getSimpleName()}_report.html"), emit: report
+    path("${bcl_input.getSimpleName()}_data"), emit: data
 
     script:
     """
