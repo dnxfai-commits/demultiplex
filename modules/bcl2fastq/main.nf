@@ -11,7 +11,7 @@ process BCL2FASTQ {
 
     output:
     path("InterOp/*"), emit: interop
-    tuple val(${bcl_input.getSimpleName()}), path("Stats/*"), emit: stats
+    path("Stats/*"), emit: stats
     path("Reports.tar.gz"), emit: reports
     path("Reads/*"), type: "file", emit: reads
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects

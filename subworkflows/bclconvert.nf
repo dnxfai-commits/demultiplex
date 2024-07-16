@@ -8,6 +8,6 @@ workflow BCLCONVERT {
 
     main:
     BCL2FASTQ ( BCL_INPUT, rundir_ch )
-    RUNMULTIQC ( BCL2FASTQ.out.stats )
+    RUNMULTIQC ( BCL_INPUT, BCL2FASTQ.out.stats )
 
 }

@@ -5,7 +5,8 @@ process RUNMULTIQC {
     publishDir "${params.outdir}" , mode: 'copy'
     
     input:
-    tuple val(name), path(stats)
+    path(bcl_input)
+    path(stats)
 
     output:
     path("*report.html"), emit: report
@@ -13,7 +14,7 @@ process RUNMULTIQC {
 
     script:
     """
-    multiqc -n $name --quiet ${stats}
+    multiqc -n ${bcl_input.getSimpleName()} --quiet ${stats}
     """
 
 }
