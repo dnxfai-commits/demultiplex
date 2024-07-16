@@ -1,4 +1,6 @@
 process BCL2FASTQ {
+    disk "${params.b2f_disk} GB"
+    memory "${params.b2f_mem} GB"
     tag "${bcl_input.getSimpleName()}"
     container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/bcl2fastq:v2.20.0'
     publishDir "$params.outdir" , mode: 'copy'
