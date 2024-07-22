@@ -1,7 +1,7 @@
 process MAKETSV {
     debug true
     tag "${input_ch.getSimpleName()}"
-    container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/maketsv:v4.3.3'
+    container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/multiqc:v1.23'
     publishDir "${params.outdir}", mode: 'copy'
 
     input:
