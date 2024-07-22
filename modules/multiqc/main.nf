@@ -1,6 +1,5 @@
 process RUNMULTIQC {
     debug true
-    docker.sudo 'true'
     container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/multiqc:v1.22.1'
     tag "${bcl_input.getSimpleName()}"
     publishDir "${params.outdir}" , mode: 'copy'
