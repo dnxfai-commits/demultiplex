@@ -10,4 +10,10 @@ workflow BCLCONVERT {
     BCL2FASTQ ( BCL_INPUT, rundir_ch )
     RUNMULTIQC ( BCL_INPUT, BCL2FASTQ.out.stats )
 
+    PROJECTS = BCL2FASTQ.out.ch_multiqc_projects.fatten()
+    PROJECTS.view()
+
+    emit:
+    PROJECTS
+
 }
