@@ -10,11 +10,11 @@ process RUNMULTIQC {
 
     output:
     path("${bcl_input.getSimpleName()}_report.html"), emit: report
-    path("${bcl_input.getSimpleName()}_data"), emit: data
+    path("${bcl_input.getSimpleName()}_report_data"), emit: data
 
     script:
     """
-    multiqc -n ${bcl_input.getSimpleName()} .
+    multiqc -n ${bcl_input.getSimpleName()}_report .
     """
 
 }
