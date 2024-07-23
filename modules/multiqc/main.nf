@@ -14,7 +14,7 @@ process RUNMULTIQC {
 
     script:
     """
-    multiqc .
+    multiqc -n ${bcl_input.getSimpleName()} .
     """
 
 }
