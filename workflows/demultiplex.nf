@@ -11,6 +11,6 @@ workflow DEMULTIPLEX {
     main:
     PREPAREDATA     ( input_ch )
     BCLCONVERT      ( PREPAREDATA.out.BCL_INPUT, rundir_ch )
-    QUALITYCHECK    ( PREPAREDATA.out.BCL_INPUT, BCLCONVERT.out.PROJECTS )
+    QUALITYCHECK    ( BCLCONVERT.out.PROJECTS )
 
 }
