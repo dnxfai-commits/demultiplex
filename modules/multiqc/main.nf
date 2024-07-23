@@ -21,7 +21,7 @@ process RUNMULTIQC {
 process PROJECTMULTIQC {
     debug true
     container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/multiqc:v1.23'
-    tag "${bcl_input.getSimpleName()}"
+    tag "${project.baseName}"
     publishDir "${params.outdir}" , mode: 'copy'
     
     input:
