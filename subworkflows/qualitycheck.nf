@@ -1,6 +1,6 @@
 include {   PROJECTMULTIQC      } from '../modules/multiqc/main.nf'
 
-workflow BCLCONVERT {
+workflow QUALITYCHECK {
     take:
     BCL_INPUT
     PROJECTS
