@@ -16,5 +16,4 @@ process RUNMULTIQC {
     """
     multiqc -n ${bcl_input.getSimpleName()}_report .
     """
-
 }
