@@ -6,7 +6,7 @@ workflow QUALITYCHECK {
 
     main:
     PROJECTS
-        .filter( !~/^Log.*/ )
+        .filter( ~/^Logs.*/ )
     //PROJECTMULTIQC ( PROJECTS )
 
 }
