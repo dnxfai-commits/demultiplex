@@ -76,6 +76,5 @@ process BCLCONVERT {
         --bcl-sampleproject-subdirectories true \\
         $no_lane_split 
     """
-    
 }
 
