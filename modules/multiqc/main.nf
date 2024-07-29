@@ -6,7 +6,7 @@ process RUNMULTIQC {
     
     input:
     path(bcl_input)
-    path(stats)
+    path(reports)
 
     output:
     path("${bcl_input.getSimpleName()}_report.html"), emit: report

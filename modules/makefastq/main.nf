@@ -57,7 +57,7 @@ process BCLCONVERT {
 
     output:
     path("*_fastq.md5"), emit: md5
-    path("Reports.tar.gz"), emit: reports
+    path("Reports/*"), type: "dir", emit: reports
     path("Reads/*"), type: "file", emit: reads
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
@@ -75,7 +75,6 @@ process BCLCONVERT {
         --bcl-sampleproject-subdirectories true \\
         $no_lane_split 
 
-    tar -zcf Reads/Reports.tar.gz Reads/Reports
     files=`find Reads -type f`
     md5sum \$files > Reads/${bcl_input.getSimpleName()}_fastq.md5
     """
