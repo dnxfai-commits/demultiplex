@@ -43,3 +43,44 @@ process BCL2FASTQ {
     """
     
 }
+
+process BCLCONVERT {
+    disk "${params.b2f_disk} GB"
+    memory "${params.b2f_mem} GB"
+    tag "${bcl_input.getSimpleName()}"
+    container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/bclconvert:v4.3.6'
+    publishDir "$params.outdir" , mode: 'copy'
+
+    input:
+    path(bcl_input)
+    path(rundir_ch)
+
+    output:
+    path("InterOp/*"), emit: interop
+    path("Stats/*"), emit: stats
+    path("Reports.tar.gz"), emit: reports
+    path("Reads/*"), type: "file", emit: reads
+    path("Reads/*"), type: "dir", emit: ch_multiqc_projects
+
+    script:
+    no_lane_split = params.b2f_no_lane_splitting ? "--no-lane-splitting " : ""
+    """
+    bcl-convert \\
+        --bcl-input-directory $rundir_ch \\
+        --output-directory $params.b2f_output_dir \\
+        --sample-sheet $bcl_input \\
+        --bcl-num-parallel-tiles 31 \\
+        --bcl-num-conversion-threads 31 \\
+        --bcl-num-compression-threads 31 \\
+        --strict-mode true \\
+        --bcl-sampleproject-subdirectories true \\
+        $no_lane_split 
+
+
+    tar -zcf Reports.tar.gz Reports
+    files=`find Reads -type f`
+    md5sum \$files > Reads/${bcl_input.getSimpleName()}_fastq.md5
+    """
+    
+}
+
