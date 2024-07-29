@@ -69,7 +69,7 @@ process BCLCONVERT {
         --bcl-input-directory $rundir_ch \\
         --output-directory $params.b2f_output_dir \\
         --sample-sheet $bcl_input \\
-        --bcl-num-parallel-tiles 31 \\
+        --bcl-num-parallel-tiles 16 \\
         --bcl-num-conversion-threads 31 \\
         --bcl-num-compression-threads 31 \\
         --strict-mode true \\
