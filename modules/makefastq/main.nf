@@ -56,7 +56,7 @@ process BCLCONVERT {
     path(rundir_ch)
 
     output:
-    path("Reads/Reports/*"), type: "dir", emit: reports
+    path("Reports/*"), type: "dir", emit: reports
     path("Reads/*"), type: "file", emit: reads
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
@@ -74,6 +74,7 @@ process BCLCONVERT {
         --bcl-sampleproject-subdirectories true \\
         $no_lane_split 
 
+    mv Reads/Reports .
     files=`find Reads -type f`
     md5sum \$files > Reads/${bcl_input.getSimpleName()}_fastq.md5
     """
