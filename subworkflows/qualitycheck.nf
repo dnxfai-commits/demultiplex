@@ -5,7 +5,13 @@ workflow QUALITYCHECK {
     PROJECTS
 
     main:
-    PROJECTS.view()
+    PROJECTS
+        .filter { file ->
+            def path = file.toString()
+            !path.contains('/Reports') && !path.contains('/Logs')
+        }
+        .view()
+
     //PROJECTMULTIQC ( PROJECTS )
 
 }
