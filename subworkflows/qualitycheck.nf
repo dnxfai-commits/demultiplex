@@ -5,7 +5,8 @@ workflow QUALITYCHECK {
     PROJECTS
 
     main:
-    PROJECTS.view()
+    PROJECTS
+        .filter( !~/^Log.*/ )
     //PROJECTMULTIQC ( PROJECTS )
 
 }
