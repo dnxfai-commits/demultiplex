@@ -56,7 +56,6 @@ process BCLCONVERT {
     path(rundir_ch)
 
     output:
-    path("*_fastq.md5"), emit: md5
     path("Reports/*"), type: "dir", emit: reports
     path("Reads/*"), type: "file", emit: reads
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
