@@ -5,7 +5,8 @@ workflow QUALITYCHECK {
     PROJECTS
 
     main:
-    PROJECTMULTIQC ( PROJECTS )
+    PROJECTS.view()
+    //PROJECTMULTIQC ( PROJECTS )
 
 }
 
