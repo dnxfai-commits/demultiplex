@@ -1,7 +1,7 @@
 include {   BCLCONVERT      } from '../modules/makefastq/main.nf'
 include {   RUNMULTIQC      } from '../modules/multiqc/main.nf'
 
-workflow BCLCONVERT {
+workflow FASTQGENERATE {
     take:
     BCL_INPUT
     rundir_ch
