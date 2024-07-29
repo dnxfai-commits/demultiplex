@@ -74,7 +74,7 @@ process BCLCONVERT {
         --bcl-sampleproject-subdirectories true \\
         $no_lane_split 
 
-    mv -r Reads/Reports .
+    mv Reads/Reports .
     tar -zcf Reports.tar.gz Reports
     files=`find Reads -type f`
     md5sum \$files > Reads/${bcl_input.getSimpleName()}_fastq.md5
