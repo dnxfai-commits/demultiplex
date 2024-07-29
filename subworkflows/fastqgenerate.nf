@@ -10,7 +10,7 @@ workflow FASTQGENERATE {
     BCLCONVERT ( BCL_INPUT, rundir_ch )
     //RUNMULTIQC ( BCL_INPUT, BCLCONVERT.out.reads )
 
-    BCLCONVERT.out.reads.view()
+    BCLCONVERT.out.report.view()
 
     PROJECTS = BCLCONVERT.out.ch_multiqc_projects.flatten()
 

@@ -56,7 +56,7 @@ process BCLCONVERT {
     path(rundir_ch)
 
     output:
-    //path("Reads/Reports/*"), type: "dir", emit: reports
+    path("Reads/Reports/*"), type: "dir", emit: reports
     path("Reads/*"), type: "file", emit: reads
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
