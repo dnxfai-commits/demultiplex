@@ -13,7 +13,7 @@ workflow FASTQGENERATE {
         .flatten()
         .filter { file ->
             def path = file.toString()
-            path.contains('~=/Reports')
+            path.contains('=~/Reports')
         }
         .view()
     
