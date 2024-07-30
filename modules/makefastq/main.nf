@@ -55,11 +55,10 @@ process BCLCONVERT {
     path(bcl_input)
     path(rundir_ch)
 
-    /*
+
     output:
-    path("Reports.tar.gz"), emit: reports
-    path("Reads/*"), type: "file", emit: reads
-    */
+    // path("Reports.tar.gz"), emit: reports
+    // path("Reads/*"), type: "file", emit: reads
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
     script:
