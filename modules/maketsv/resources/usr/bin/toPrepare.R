@@ -25,6 +25,7 @@ args = commandArgs(trailingOnly=TRUE)
     sst<-read.delim(file=ssPath, header=TRUE, sep=",")
   }
 
+OverrideCycles <- gsub(",", ";", OverrideCycles)
 
 
   if (length(grep("-", sst[,5]))==length(sst[,5])){
