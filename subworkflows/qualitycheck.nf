@@ -4,8 +4,8 @@ workflow QUALITYCHECK {
     take:
     PROJECTS
 
-    // main:
-    //PROJECTMULTIQC ( PROJECTS )
+    main:
+    PROJECTMULTIQC ( PROJECTS )
 
 }
 
