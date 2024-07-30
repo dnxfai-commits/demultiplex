@@ -14,7 +14,6 @@ process RUNMULTIQC {
 
     script:
     """
-    tar -xvzf $reports
     multiqc -n ${bcl_input.getSimpleName()}_report .
     """
 }
