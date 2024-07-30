@@ -13,10 +13,10 @@ workflow FASTQGENERATE {
         .flatten()
         .filter { file ->
             def path = file.toString()
-            path.contains('=~/Reports')
+            path.contains('/Reports')
         }
         .view()
-    
+        
     //RUNMULTIQC ( BCL_INPUT, BCLCONVERT.out.reports )
 
     PROJECTS = BCLCONVERT.out.ch_multiqc_projects
