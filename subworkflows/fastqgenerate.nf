@@ -15,7 +15,6 @@ workflow FASTQGENERATE {
             def path = file.toString()
             path.contains('/Reports')
         }
-        .view()
         
     RUNMULTIQC ( BCL_INPUT, REPORTS )
 
@@ -25,7 +24,6 @@ workflow FASTQGENERATE {
             def path = file.toString()
             !path.contains('/Reports') && !path.contains('/Logs')
         }
-        .view()
 
     emit:
     PROJECTS
