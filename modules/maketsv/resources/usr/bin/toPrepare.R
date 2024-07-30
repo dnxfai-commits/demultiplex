@@ -12,6 +12,7 @@ args = commandArgs(trailingOnly=TRUE)
   originalSampleProject <- args[3]
   format <- args[4]
   mainProject <- args[5]
+  OverrideCycles <- args[6]
   date <- Sys.Date()
 
   if (format=="xlsx"){
@@ -66,6 +67,7 @@ args = commandArgs(trailingOnly=TRUE)
   resuMa1[7,2]<-"FASTQ Only"
 
   resuMa1[10,1]<-"[Settings]"
+  resuMa1[11,2]<-paste0("OverrideCycles,",OverrideCycles)
 
   resuMa2<-matrix(ncol=ncols,nrow=length(sst[,1])+2)
   resuMa2[1,1]<-"[Data]"
