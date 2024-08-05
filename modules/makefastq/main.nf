@@ -73,7 +73,8 @@ process BCLCONVERT {
         --bcl-num-compression-threads 16 \\
         --strict-mode true \\
         --bcl-sampleproject-subdirectories true \\
-        $no_lane_split 
+        $no_lane_split \\
+        --output-legacy-stats true
     """
 }
 
