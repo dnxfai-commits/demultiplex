@@ -17,7 +17,7 @@ process BCL2FASTQ {
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
     script:
-    no_lane_split = params.b2f_no_lane_splitting ? "--no-lane-splitting " : ""
+    no_lane_split = params.b2f_no_lane_splitting ? "--no-lane-splitting true" : ""
     miss_bcl = params.b2f_try_miss_bcl ? "--ignore-missing-bcls --ignore-missing-filter --ignore-missing-positions " : ""
     mask = params.use_mask ? "--use-bases-mask ${params.b2f_mask}" : ""
     """
