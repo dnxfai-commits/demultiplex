@@ -13,17 +13,14 @@
             "properties": {
                 "input": {
                     "type": "string",
-                    "description": "comma separated file with header"
                 },
-                "reads": {
-                    "type": "string",
-                    "description": "reads folder (*gz)"
+                "rundir": {
+                    "type": "string"
                 },
                 "outdir": {
-                    "type": "string",
-                    "description": "outdir path"
+                    "type": "string"
                 },
-                "genome": {
+                "b2f_mask": {
                     "type": "string"
                 }
             },
@@ -31,148 +28,12 @@
                 "input",
                 "reads",
                 "outdir",
-                "genome"
+                "b2f_mask"
             ]
         },
-        "config_parameters": {
-            "title": "CONFIG PARAMETERS",
-            "type": "object",
-            "description": "",
-            "default": "",
-            "properties": {
-                "adapter_fasta": {
-                    "type": "string",
-                    "default": "gs://ngdx-runs/Analysis/DigitalRNAseq/adapter_fasta.fa",
-                    "hidden": true
-                },
-                "bbduk_k": {
-                    "type": "integer",
-                    "default": 13,
-                    "hidden": true
-                },
-                "bbduk_ktrim": {
-                    "type": "string",
-                    "default": "r",
-                    "hidden": true
-                },
-                "bbduk_useshortkmers": {
-                    "type": "string",
-                    "default": "t",
-                    "hidden": true
-                },
-                "bbduk_mink": {
-                    "type": "integer",
-                    "default": 5,
-                    "hidden": true
-                },
-                "bbduk_qtrim": {
-                    "type": "string",
-                    "default": "r",
-                    "hidden": true
-                },
-                "bbduk_trimq": {
-                    "type": "integer",
-                    "default": 10,
-                    "hidden": true
-                },
-                "single_end": {
-                    "type": "boolean",
-                    "default": true,
-                    "hidden": true
-                },
-                "bbduk_overwrite": {
-                    "type": "boolean",
-                    "default": true,
-                    "hidden": true
-                },
-                "hybrid_gtf": {
-                    "type": "string",
-                    "default": "gs://ngdx-runs/references/annotations/quant_hg38cr_mm10cr.gtf",
-                    "hidden": true
-                },
-                "star_hybrid_index": {
-                    "type": "string",
-                    "default": "gs://ngdx-runs/references/index/STAR_2.6/hg38cr_mm10cr",
-                    "hidden": true
-                },
-                "krakendb": {
-                    "type": "string",
-                    "default": "gs://ngdx-runs/references/minikraken2_v2_8GB_201904_UPDATE",
-                    "hidden": true
-                },
-                "kraken_minhit": {
-                    "type": "integer",
-                    "default": 50,
-                    "hidden": true
-                },
-                "multiqc_config": {
-                    "type": "string",
-                    "default": "gs://ngdx-runs/references/digital/multiqc_config.yaml",
-                    "hidden": true
-                },
-                "combine_matrices": {
-                    "type": "string",
-                    "default": "gs://ngdx-runs/references/digital/combine_matrices.R",
-                    "hidden": true
-                },
-                "help": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "version": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "validate_params": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "monochrome_logs": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "skip_fastqc": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "skip_multiqc": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "skip_trimming": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "skip_alignment": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "skip_featurecounts": {
-                    "type": "boolean",
-                    "hidden": true
-                },
-                "gtf": {
-                    "type": "string",
-                    "hidden": true
-                },
-                "star_index": {
-                    "type": "string",
-                    "hidden": true
-                },
-                "bbduk_minlength": {
-                    "type": "integer",
-                    "default": 20,
-                    "hidden": true
-                }
-            }
-        }
-    },
     "allOf": [
         {
             "$ref": "#/definitions/run_parameters"
-        },
-        {
-            "$ref": "#/definitions/config_parameters"
         }
     ]
 }
