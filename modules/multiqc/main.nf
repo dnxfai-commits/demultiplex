@@ -38,6 +38,7 @@ process PROJECTMULTIQC {
     tuple val(project_name), path("*_fastqc.{zip,html}"), emit: fastqc
     tuple val(project_name), path("${project_name}_report.html"), emit: report
     tuple val(project_name), path("${project_name}_report_data"), emit: data
+    tuple val(project_name), path("${project_name}.md5"), emit: md5
 
     script:
     project_name = project.baseName
