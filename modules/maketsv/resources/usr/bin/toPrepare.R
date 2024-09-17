@@ -13,6 +13,7 @@ args = commandArgs(trailingOnly=TRUE)
   format <- args[4]
   mainProject <- args[5]
   OverrideCycles <- args[6]
+  IndexReads <- args[7]
   date <- Sys.Date()
 
   if (format=="xlsx"){
@@ -69,6 +70,11 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
   resuMa1[10,1]<-"[Settings]"
   resuMa1[11,1]<-paste0("OverrideCycles,",OverrideCycles)
+  if(IndexReads == "NO") {
+    resuMa1[12,1]<-paste0("CreateFastqForIndexReads,0")
+    } else if(IndexReads == "YES") {
+    resuMa1[12,1]<-paste0("CreateFastqForIndexReads,1")
+    }
 
   resuMa2<-matrix(ncol=ncols,nrow=length(sst[,1])+2)
   resuMa2[1,1]<-"[Data]"
