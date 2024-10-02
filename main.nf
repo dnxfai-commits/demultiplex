@@ -53,8 +53,10 @@ include { DEMULTIPLEX } from './workflows/demultiplex'
 workflow NEGEDIA {
 
     DEMULTIPLEX(
-        input_ch,
-        rundir_ch
+        //input_ch,
+        //rundir_ch
+        input_ch.view()
+        rundir_ch.view()
     )
     
 }
