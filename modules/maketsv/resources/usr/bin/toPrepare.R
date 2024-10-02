@@ -70,9 +70,9 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
   resuMa1[10,1]<-"[Settings]"
   resuMa1[11,1]<-paste0("OverrideCycles,",OverrideCycles)
-  if(IndexReads == "NO") {
+  if(IndexReads == "false") {
     resuMa1[12,1]<-paste0("CreateFastqForIndexReads,0")
-    } else if(IndexReads == "YES") {
+    } else if(IndexReads == "true") {
     resuMa1[12,1]<-paste0("CreateFastqForIndexReads,1")
     }
 
