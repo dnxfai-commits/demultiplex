@@ -9,7 +9,7 @@ process MAKETSV {
 
     output:
     path("Params"), type: "dir"
-    path("*.csv"), emit: csv
+    path("DEMULTIPLEX*.csv"), emit: csv
     
     script:
     """
