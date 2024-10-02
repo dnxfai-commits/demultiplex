@@ -66,39 +66,14 @@ class WorkflowMain {
         // Print parameter summary log to screen
         log.info paramsSummaryLog(workflow, params)
 
-        // Warn about using custom configs to provide pipeline parameters
-        NfcoreTemplate.warnParamsProvidedInConfig(workflow, log)
-
         // Validate workflow parameters via the JSON schema
         if (params.validate_params) {
             NfcoreSchema.validateParameters(workflow, params, log)
         }
 
-        // Check that a -profile or Nextflow config has been provided to run the pipeline
-        NfcoreTemplate.checkConfigProvided(workflow, log)
-
-        // Check that conda channels are set-up correctly
-        if (workflow.profile.tokenize(',').intersect(['conda', 'mamba']).size() >= 1) {
-            Utils.checkCondaChannels(log)
-        }
-
-        // Check AWS batch settings
-        NfcoreTemplate.awsBatch(workflow, params)
-
         // Check input has been provided
         if (!params.input) {
             Nextflow.error("Please provide an input samplesheet to the pipeline e.g. '--input samplesheet.csv'")
         }
-    }
-    //
-    // Get attribute from genome config file e.g. fasta
-    //
-    public static Object getGenomeAttribute(params, attribute) {
-        if (params.genomes && params.genome && params.genomes.containsKey(params.genome)) {
-            if (params.genomes[ params.genome ].containsKey(attribute)) {
-                return params.genomes[ params.genome ][ attribute ]
-            }
-        }
-        return null
     }
 }
