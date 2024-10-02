@@ -16,7 +16,7 @@ process MAKETSV {
     echo "File to convert: ${input_ch.getSimpleName()}"
     mkdir -p Params/
     header=\$(head -n 1 ${input_ch})
-    awk -F"," 'NR == 1 { header=\$0; next } { print >> ("Params/"\$12 ".txt") }' ${input_ch}
+    awk -F"," 'NR == 1 { header=\$0; next } { print >> ("Params/"\$12 ".csv") }' ${input_ch}
 
     for file in Params/*; do
         if [[ -f "\$file" ]]; then
