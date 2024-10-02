@@ -11,8 +11,6 @@ workflow DEMULTIPLEX {
     main:
     PREPAREDATA     ( input_ch )
     FASTQGENERATE   ( PREPAREDATA.out.BCL_INPUT, rundir_ch )
-    /*
     QUALITYCHECK    ( FASTQGENERATE.out.PROJECTS )
-    */
 
 }
