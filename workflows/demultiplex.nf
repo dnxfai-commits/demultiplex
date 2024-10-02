@@ -9,8 +9,12 @@ workflow DEMULTIPLEX {
     rundir_ch
 
     main:
+    input_ch.view()
+    rundir_ch.view()
+    /*
     PREPAREDATA     ( input_ch )
     FASTQGENERATE   ( PREPAREDATA.out.BCL_INPUT, rundir_ch )
     QUALITYCHECK    ( FASTQGENERATE.out.PROJECTS )
+    */
 
 }

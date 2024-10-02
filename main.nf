@@ -40,9 +40,6 @@ if (params.rundir) { rundir_ch = file(params.rundir, checkIfExists: true) } else
 
 // channels
 
-rundir_ch.view()
-input_ch.view()
-
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     NAMED WORKFLOW FOR PIPELINE
@@ -52,7 +49,7 @@ input_ch.view()
 WorkflowMain.initialise(workflow, params, log)
 
 include { DEMULTIPLEX } from './workflows/demultiplex'
-/*
+
 workflow NEGEDIA {
 
     DEMULTIPLEX(
@@ -61,17 +58,17 @@ workflow NEGEDIA {
     )
     
 }
-*/
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN ALL WORKFLOWS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-/*
+
 workflow {
     NEGEDIA ()
 }
-*/
+
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     END
