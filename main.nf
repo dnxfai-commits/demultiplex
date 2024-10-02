@@ -46,7 +46,7 @@ if (params.rundir) { rundir_ch = file(params.rundir, checkIfExists: true) } else
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-WorkflowMain.initialise(workflow, params, log)
+//WorkflowMain.initialise(workflow, params, log)
 
 include { DEMULTIPLEX } from './workflows/demultiplex'
 
