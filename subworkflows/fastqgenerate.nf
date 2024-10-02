@@ -8,7 +8,6 @@ workflow FASTQGENERATE {
 
     main:
     BCLCONVERT ( BCL_INPUT, rundir_ch )
-    /*
 
     REPORTS = BCLCONVERT.out.ch_multiqc_projects
         .flatten()
@@ -28,6 +27,6 @@ workflow FASTQGENERATE {
 
     emit:
     PROJECTS
-    */
+    
 }
 
