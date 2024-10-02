@@ -1,6 +1,6 @@
 process BCLCONVERT {
-    disk "${params.b2f_disk} GB"
-    memory "${params.b2f_mem} GB"
+    disk "${params.bcl_disk} GB"
+    memory "${params.bcl_mem} GB"
     tag "${bcl_input.getSimpleName()}"
     container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/bclconvert:v4.3.6'
     publishDir "$params.outdir" , mode: 'copy'
@@ -13,11 +13,11 @@ process BCLCONVERT {
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
     script:
-    lane_split = params.lane_splitting ? "--no-lane-splitting false" : "--no-lane-splitting true"
+    lane_split = params.bcl_lane_splitting ? "--no-lane-splitting false" : "--no-lane-splitting true"
     """
     bcl-convert \\
         --bcl-input-directory $rundir_ch \\
-        --output-directory $params.b2f_output_dir \\
+        --output-directory $params.bcl_output_dir \\
         --sample-sheet $bcl_input \\
         --bcl-num-parallel-tiles 16 \\
         --bcl-num-conversion-threads 16 \\
