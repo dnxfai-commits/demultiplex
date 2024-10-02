@@ -40,8 +40,8 @@ if (params.rundir) { rundir_ch = file(params.rundir, checkIfExists: true) } else
 
 // channels
 
-rundir_ch
-input_ch
+rundir_ch.view()
+input_ch.view()
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
