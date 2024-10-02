@@ -13,7 +13,7 @@ process BCLCONVERT {
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
     script:
-    lane_split = params.bcl_lane_splitting ? "--no-lane-splitting false" : "--no-lane-splitting true"
+    lane_split = params.bcl_lane_splitting ? "" : "--no-lane-splitting true"
     """
     bcl-convert \\
         --bcl-input-directory $rundir_ch \\
