@@ -1,0 +1,5 @@
+{
+  "outdir": "$rundirgs://ngdx-scratch-west1/INPUTDIR/DUAL12NT",
+  "input": "gs://ngdx-scratch-west1/INPUTDIR/20240418_HWCLFDRX3_Lexogen_188_189_DUAL12NT.csv",
+  "rundir": "gs://ngdx-scratch-west1/INPUTDIR/"
+}
