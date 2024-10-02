@@ -38,9 +38,6 @@ Pipeline overview:
 if (params.input) { input_ch = file(params.input, checkIfExists: true) } else { exit 1, 'Input samplesheet not specified!' }
 if (params.rundir) { rundir_ch = file(params.rundir, checkIfExists: true) } else { exit 1, "Run directory not found!" }
 
-input_ch.view()
-rundir_ch.view()
-
 // channels
 
 /*
