@@ -1,5 +1,5 @@
 include { PREPAREDATA } from '../subworkflows/preparedata'
-include { BCLCONVERT } from '../subworkflows/bclconvert'
+include { FASTQGENERATE } from '../subworkflows/fastqgenerate'
 include { QUALITYCHECK } from '../subworkflows/qualitycheck'
 
 workflow DEMULTIPLEX {
@@ -10,7 +10,7 @@ workflow DEMULTIPLEX {
 
     main:
     PREPAREDATA     ( input_ch )
-    BCLCONVERT      ( PREPAREDATA.out.BCL_INPUT, rundir_ch )
-    QUALITYCHECK    ( BCLCONVERT.out.PROJECTS )
+    FASTQGENERATE   ( PREPAREDATA.out.BCL_INPUT, rundir_ch )
+    QUALITYCHECK    ( FASTQGENERATE.out.PROJECTS )
 
 }

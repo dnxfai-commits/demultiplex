@@ -6,7 +6,7 @@ process RUNMULTIQC {
     
     input:
     path(bcl_input)
-    path(stats)
+    path(reports)
 
     output:
     path("${bcl_input.getSimpleName()}_report.html"), emit: report
@@ -27,6 +27,7 @@ process PROJECTMULTIQC {
            if (filename.endsWith("fastqc.html"))              "Reads/$project_name/fastqc/$filename"
       else if (filename.endsWith("report.html"))              "Reads/$project_name/multiqc/$filename"
       else if (filename.endsWith("report_data"))              "Reads/$project_name/multiqc/$filename"
+      else if (filename.endsWith("md5"))                      "Reads/$project_name/$filename"
       else null
     }
     
@@ -37,11 +38,13 @@ process PROJECTMULTIQC {
     tuple val(project_name), path("*_fastqc.{zip,html}"), emit: fastqc
     tuple val(project_name), path("${project_name}_report.html"), emit: report
     tuple val(project_name), path("${project_name}_report_data"), emit: data
+    tuple val(project_name), path("${project_name}.md5"), emit: md5
 
     script:
     project_name = project.baseName
     """
     fastqc -t 15 --quiet ${project_name}/* --outdir .
     multiqc -n ${project_name}_report .
+    md5sum ${project_name}/* > ${project_name}.md5
     """
 }
