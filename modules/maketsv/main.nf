@@ -24,6 +24,6 @@ process MAKETSV {
         fi
     done
 
-    toPrepare.R ${input_ch} ${input_ch.getSimpleName()}.csv TRUE txt ${input_ch.getSimpleName()} $params.bcl_mask $params.IndexReads
+    toPrepare.R ${input_ch} TRUE csv ${input_ch.getSimpleName()} $params.bcl_mask $params.IndexReads
     """
 }

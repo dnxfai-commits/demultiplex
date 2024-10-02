@@ -8,12 +8,11 @@ args = commandArgs(trailingOnly=TRUE)
   #fileout="/home/lucio/superGrive/Mega/bioinformatics/data/QuantSeq/2019/Lexogen_57-58/testOutoDemulSS.csv"
   #format c("xlsx","csv")
   ssPath <- args[1]
-  fileout <- args[2]
-  originalSampleProject <- args[3]
-  format <- args[4]
-  mainProject <- args[5]
-  OverrideCycles <- args[6]
-  IndexReads <- args[7]
+  originalSampleProject <- args[2]
+  format <- args[3]
+  mainProject <- args[4]
+  OverrideCycles <- args[5]
+  IndexReads <- args[6]
   date <- Sys.Date()
 
   if (format=="xlsx"){
@@ -22,7 +21,7 @@ args = commandArgs(trailingOnly=TRUE)
     sst<-read.delim(file=ssPath, header=TRUE, sep="\t")
   } else if (format=="txt"){
     sst<-read.delim(file=ssPath, header=TRUE, sep="\t")
-  } else {
+  } else if (format=="csv"){
     sst<-read.delim(file=ssPath, header=TRUE, sep=",")
   }
 
@@ -31,11 +30,15 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
   if (length(grep("-", sst[,5]))==length(sst[,5])){
     print("Dual index analysis identified")
+    index_length <- paste0((nchar(sst[1,5])-1)/2)
+    outname <- paste0("DEMULTIPLEX_DUAL", index_length, "NT.csv")
     ncols=5
     numInd<-2
     colsnames=c("Sample_ID", "index", "index2", "Sample_Project", "Lane")
   } else {
     if (length(grep("-", sst[,5]))==0){
+      index_length <- paste0((nchar(sst[,15])-1)/2)
+      outname <- paste0("DEMULTIPLEX_SINGLE", index_length, "NT.csv")
       print("Single index analysis identified")
       ncols=4
       numInd<-1
@@ -70,9 +73,9 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
   resuMa1[10,1]<-"[Settings]"
   resuMa1[11,1]<-paste0("OverrideCycles,",OverrideCycles)
-  if(IndexReads == "false") {
+  if(IndexReads == "NO") {
     resuMa1[12,1]<-paste0("CreateFastqForIndexReads,0")
-    } else if(IndexReads == "true") {
+    } else if(IndexReads == "YES") {
     resuMa1[12,1]<-paste0("CreateFastqForIndexReads,1")
     }
 
@@ -114,4 +117,4 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
 
 
-  write.table(x=resuma,file=fileout,quote=FALSE, na="",row.names=FALSE,col.names=FALSE,sep=",")
+  write.table(x=resuma,file=outname,quote=FALSE, na="",row.names=FALSE,col.names=FALSE,sep=",")
