@@ -14,16 +14,8 @@ process MAKETSV {
     script:
     """
     echo "File to convert: ${input_ch.getSimpleName()}"
-    mkdir -p Params/
-    header=\$(head -n 1 ${input_ch})
-    awk -F"," 'NR == 1 { header=\$0; next } { print >> ("Params/"\$12 ".csv") }' ${input_ch}
 
-    for file in Params/*; do
-        if [[ -f "\$file" ]]; then
-            echo "\$header" | cat - "\$file" > temp && mv temp "\$file"
-        fi
-    done
-
+    createParams.R ${input_ch}
     toPrepare.R ${input_ch} TRUE csv ${input_ch.getSimpleName()} $params.bcl_mask $params.IndexReads
     """
 }
