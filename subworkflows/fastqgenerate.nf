@@ -27,5 +27,6 @@ workflow FASTQGENERATE {
 
     emit:
     PROJECTS
+    
 }
 
