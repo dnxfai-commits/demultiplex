@@ -37,7 +37,7 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
     colsnames=c("Sample_ID", "index", "index2", "Sample_Project", "Lane")
   } else {
     if (length(grep("-", sst[,5]))==0){
-      index_length <- paste0((nchar(sst[1,5]))
+      index_length <- paste0((nchar(sst[1,5])))
       outname <- paste0("DEMULTIPLEX_SINGLE", index_length, "NT.csv")
       print("Single index analysis identified")
       ncols=4
