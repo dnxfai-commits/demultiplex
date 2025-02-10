@@ -50,7 +50,7 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
   sst<-as.data.frame(apply(sst,2,function(x)gsub('\\s+', '',x))) 
 
-  resuMa1<-matrix(ncol=ncols,nrow=14)
+  resuMa1<-matrix(ncol=ncols,nrow=12)
   resuMa1[1,1]<-"[Header]"
 
   resuMa1[2,1]<-"IEMFileVersion"
@@ -78,8 +78,8 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
     } else if(IndexReads == "YES") {
     resuMa1[12,1]<-paste0("CreateFastqForIndexReads,1")
     }
-  resuMa1[13,1]<-paste0("BarcodeMismatchesIndex1,0")
-  resuMa1[14,1]<-paste0("BarcodeMismatchesIndex2,0")
+  #resuMa1[13,1]<-paste0("BarcodeMismatchesIndex1,0")
+  #resuMa1[14,1]<-paste0("BarcodeMismatchesIndex2,0")
  
 
   resuMa2<-matrix(ncol=ncols,nrow=length(sst[,1])+2)
