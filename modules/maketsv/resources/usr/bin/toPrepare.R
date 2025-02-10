@@ -50,7 +50,7 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
 
   sst<-as.data.frame(apply(sst,2,function(x)gsub('\\s+', '',x))) 
 
-  resuMa1<-matrix(ncol=ncols,nrow=12)
+  resuMa1<-matrix(ncol=ncols,nrow=14)
   resuMa1[1,1]<-"[Header]"
 
   resuMa1[2,1]<-"IEMFileVersion"
