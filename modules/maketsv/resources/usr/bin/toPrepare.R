@@ -78,6 +78,7 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
     } else if(IndexReads == "YES") {
     resuMa1[12,1]<-paste0("CreateFastqForIndexReads,1")
     }
+ resuMa1[13,1]<-"BarcodeMismatchesIndex1=0"
 
   resuMa2<-matrix(ncol=ncols,nrow=length(sst[,1])+2)
   resuMa2[1,1]<-"[Data]"
