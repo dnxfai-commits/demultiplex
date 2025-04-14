@@ -14,7 +14,7 @@ process BCLCONVERT {
 
     script:
     lane_split = params.bcl_lane_splitting ? "" : "--no-lane-splitting true"
-    cpu = ${task.cpus} / 2
+    cpu = ${task.cpus / 2} 
     """
     bcl-convert \\
         --bcl-input-directory $rundir_ch \\
