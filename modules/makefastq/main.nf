@@ -14,14 +14,15 @@ process BCLCONVERT {
 
     script:
     lane_split = params.bcl_lane_splitting ? "" : "--no-lane-splitting true"
+    cpu = $task.cpus / 2
     """
     bcl-convert \\
         --bcl-input-directory $rundir_ch \\
         --output-directory $params.bcl_output_dir \\
         --sample-sheet $bcl_input \\
-        --bcl-num-parallel-tiles 16 \\
-        --bcl-num-conversion-threads 16 \\
-        --bcl-num-compression-threads 16 \\
+        --bcl-num-parallel-tiles  \\
+        --bcl-num-conversion-threads $cpu \\
+        --bcl-num-compression-threads $cpu \\
         --strict-mode true \\
         --bcl-sampleproject-subdirectories true \\
         $lane_split \\
