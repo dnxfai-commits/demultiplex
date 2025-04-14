@@ -20,7 +20,7 @@ process BCLCONVERT {
         --bcl-input-directory $rundir_ch \\
         --output-directory $params.bcl_output_dir \\
         --sample-sheet $bcl_input \\
-        --bcl-num-parallel-tiles  \\
+        --bcl-num-parallel-tiles $cpu \\
         --bcl-num-conversion-threads $cpu \\
         --bcl-num-compression-threads $cpu \\
         --strict-mode true \\
