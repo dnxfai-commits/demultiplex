@@ -48,7 +48,13 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
     }
   }
 
-  sst<-as.data.frame(apply(sst,2,function(x)gsub('\\s+', '',x))) 
+  if(nrow(sst)==0) {
+    stop("The sample sheet is empty. Please provide a valid sample sheet.")
+  } else if(nrow(sst)==1) {
+    print("The sample sheet has only one row.")
+  } else {
+    sst<-as.data.frame(apply(sst,2,function(x)gsub('\\s+', '',x))) 
+  }
 
   resuMa1<-matrix(ncol=ncols,nrow=12)
   resuMa1[1,1]<-"[Header]"
@@ -80,7 +86,6 @@ OverrideCycles <- gsub(",", ";", OverrideCycles)
     }
   #resuMa1[13,1]<-paste0("BarcodeMismatchesIndex1,0")
   #resuMa1[14,1]<-paste0("BarcodeMismatchesIndex2,0")
- 
 
   resuMa2<-matrix(ncol=ncols,nrow=length(sst[,1])+2)
   resuMa2[1,1]<-"[Data]"
