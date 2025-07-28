@@ -2,7 +2,7 @@ process BCLCONVERT {
     disk "${params.bcl_disk} GB"
     memory "${params.bcl_mem} GB"
     tag "${bcl_input.getSimpleName()}"
-    container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/bclconvert:v4.3.6'
+    container 'europe-west1-docker.pkg.dev/ngdx-nextflow/negedia/bclconvert:v4.4.4'
     publishDir "$params.outdir" , mode: 'copy'
 
     input:
