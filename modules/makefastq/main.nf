@@ -13,7 +13,7 @@ process BCLCONVERT {
     path("Reads/*"), type: "dir", emit: ch_multiqc_projects
 
     script:
-    cpu = (task.cpus / 2) - 2
+    cpu = Math.max(2, (task.cpus / 4) as int)
 
     // Lane splitting flag
     lane_split = params.bcl_lane_splitting ? "" : "--no-lane-splitting true"
